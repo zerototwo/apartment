@@ -1,0 +1,189 @@
+/* 通用样式 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.logo-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+}
+
+/* 动画环 */
+.rotating-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    transform: translate(-50%, -50%);
+}
+
+.circle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.circle-left {
+    border-top: 3px solid #007bff;
+    border-left: 3px solid #007bff;
+    animation: rotate-left 3s linear infinite;
+}
+
+.circle-right {
+    border-bottom: 3px solid #ff5722;
+    border-right: 3px solid #ff5722;
+    animation: rotate-right 5s linear infinite;
+}
+
+/* 动画效果 */
+@keyframes rotate-left {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-right {
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(-180deg);
+    }
+}
+
+/* 表单样式 */
+/*.form-container {*/
+/*    width: 300px;*/
+/*    background: #fff;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
+/*h1 {*/
+/*    margin: 0 0 20px;*/
+/*    text-align: center;*/
+/*}*/
+
+/*label {*/
+/*    display: block;*/
+/*    margin: 10px 0 5px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*input {*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*    margin-bottom: 15px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*}*/
+
+/*button {*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*    background: #007bff;*/
+/*    color: #fff;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    font-size: 16px;*/
+/*}*/
+
+.form-container {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"] {
+    width: 93%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.form-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+    background: #4cae4c;
+}
+
+.form-container a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    color: #007bff;
+    transform: scale(1.1);
+    transition: transform 0.5s ease;
+}
+
+/*button:hover {*/
+/*    background: #0056b3;*/
+/*}*/
+
+/*p {*/
+/*    text-align: center;*/
+/*    margin-top: 10px;*/
+/*}*/
+
+/*p a {*/
+/*    color: #007bff;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*p a:hover {*/
+/*    text-decoration: underline;*/
+/*}*/
