@@ -12,7 +12,7 @@
             background-color: #f4f4f4;
             color: #333;
         }
-        .contract { k
+        .contract {
             max-width: 800px;
             margin: 50px auto;
             padding: 30px;
