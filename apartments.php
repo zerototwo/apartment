@@ -1,3 +1,16 @@
+<?php
+// 添加在文件开头用于调试
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// 检查图片文件是否存在
+$debugImagePath = "pics/rental/1.jpg";
+if (file_exists($debugImagePath)) {
+    error_log("Image exists: " . $debugImagePath);
+} else {
+    error_log("Image not found: " . $debugImagePath);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,39 +63,113 @@
 
     <!-- 房源列表 -->
     <div class="apartments-container">
-        <!-- 房源卡片 1 -->
-        <div class="apartment-card">
-            <img src="pics/apartment1.jpg" alt="Apartment 1">
-            <div class="apartment-info">
-                <h3>Luxury Studio in Paris</h3>
-                <p class="location">Paris, 5th District</p>
-                <p class="price">€800/month</p>
-                <div class="features">
-                    <span>20m²</span>
-                    <span>Furnished</span>
-                    <span>WiFi</span>
-                </div>
-                <button class="view-details">View Details</button>
-            </div>
-        </div>
+        <!-- 房源卡片 1-10 的循环 -->
+        <?php
+        $apartments = [
+            [
+                'title' => 'Studio meublé proche campus',
+                'persons' => '1-2 pers.',
+                'type' => 'Studio',
+                'price' => '450',
+                'location' => 'Paris 5ème - Quartier Latin'
+            ],
+            [
+                'title' => 'Grand appartement lumineux',
+                'persons' => '2-3 pers.',
+                'type' => 'T3',
+                'price' => '850',
+                'location' => 'Lyon Centre - Part-Dieu'
+            ],
+            [
+                'title' => 'Colocation moderne',
+                'persons' => '4 pers.',
+                'type' => 'T4',
+                'price' => '400',
+                'location' => 'Marseille 1er'
+            ],
+            [
+                'title' => 'Studio rénové avec balcon',
+                'persons' => '1 pers.',
+                'type' => 'Studio',
+                'price' => '580',
+                'location' => 'Nice Centre'
+            ],
+            [
+                'title' => 'Appartement avec vue sur jardin',
+                'persons' => '2 pers.',
+                'type' => 'T2',
+                'price' => '650',
+                'location' => 'Bordeaux Chartrons'
+            ],
+            [
+                'title' => 'Duplex centre historique',
+                'persons' => '2-3 pers.',
+                'type' => 'T3',
+                'price' => '780',
+                'location' => 'Toulouse Capitole'
+            ],
+            [
+                'title' => 'Studio étudiant équipé',
+                'persons' => '1 pers.',
+                'type' => 'Studio',
+                'price' => '420',
+                'location' => 'Montpellier Facultés'
+            ],
+            [
+                'title' => 'Appartement contemporain',
+                'persons' => '2 pers.',
+                'type' => 'T2',
+                'price' => '700',
+                'location' => 'Nantes Centre'
+            ],
+            [
+                'title' => 'Colocation standing',
+                'persons' => '3 pers.',
+                'type' => 'T4',
+                'price' => '500',
+                'location' => 'Strasbourg - Orangerie'
+            ],
+            [
+                'title' => 'Studio neuf avec terrasse',
+                'persons' => '1-2 pers.',
+                'type' => 'Studio',
+                'price' => '550',
+                'location' => 'Lille Vieux-Lille'
+            ]
+        ];
 
-        <!-- 房源卡片 2 -->
-        <div class="apartment-card">
-            <img src="pics/apartment2.jpg" alt="Apartment 2">
-            <div class="apartment-info">
-                <h3>Modern Shared Room</h3>
-                <p class="location">Lyon, City Center</p>
-                <p class="price">€500/month</p>
-                <div class="features">
-                    <span>15m²</span>
-                    <span>Shared Kitchen</span>
-                    <span>Garden</span>
+        foreach ($apartments as $index => $apartment) {
+            $imageNumber = ($index % 3) + 1; // 循环使用1-3号图片
+        ?>
+            <div class="apartment-card">
+                <div class="card-header">
+                    <span class="featured-tag">À la une</span>
+                    <button class="favorite-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="currentColor"/>
+                        </svg>
+                    </button>
                 </div>
-                <button class="view-details">View Details</button>
+                <img src="./pics/rental/<?php echo $imageNumber; ?>.png" alt="<?php echo $apartment['title']; ?>" onerror="this.onerror=null; this.src='pics/default.jpg';" />
+                <div class="apartment-info">
+                    <h3><?php echo $apartment['title']; ?></h3>
+                    <div class="basic-info">
+                        <span><?php echo $apartment['persons']; ?></span>
+                        <span>•</span>
+                        <span><?php echo $apartment['type']; ?></span>
+                    </div>
+                    <div class="payment-info">
+                        <span class="payment-badge">Paiement en ligne</span>
+                    </div>
+                    <div class="price-info">
+                        <span class="price-label">à partir de</span>
+                        <span class="price"><?php echo $apartment['price']; ?> €</span>
+                        <span class="price-period">/ mois</span>
+                    </div>
+                    <p class="location"><?php echo $apartment['location']; ?></p>
+                </div>
             </div>
-        </div>
-
-        <!-- 更多房源卡片... -->
+        <?php } ?>
     </div>
 
     <!-- 分页 -->
