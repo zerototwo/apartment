@@ -17,8 +17,8 @@ if (file_exists($debugImagePath)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Apartments</title>
-    <link rel="stylesheet" href="styleindex.css">
-    <link rel="stylesheet" href="styleapartments.css">
+    <link rel="stylesheet" href="css/styleindex.css">
+    <link rel="stylesheet" href="css/styleapartments.css">
 </head>
 <body>
     <!-- 顶部导航栏 -->
@@ -139,7 +139,7 @@ if (file_exists($debugImagePath)) {
         ];
 
         foreach ($apartments as $index => $apartment) {
-            $imageNumber = ($index % 3) + 1; // 循环使用1-3号图片
+            $imageNumber = $index + 1; // 循环使用1-3号图片
         ?>
             <div class="apartment-card">
                 <div class="card-header">
