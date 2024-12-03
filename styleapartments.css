@@ -1,0 +1,122 @@
+/* 筛选器样式 */
+.filters {
+  padding: 20px;
+  background: #fff;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 15px;
+}
+
+.filters select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 150px;
+}
+
+/* 房源列表容器 */
+.apartments-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 房源卡片样式 */
+.apartment-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.apartment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.apartment-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.apartment-info {
+  padding: 15px;
+}
+
+.apartment-info h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.location {
+  color: #666;
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+.price {
+  color: #007bff;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.features {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.features span {
+  background: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.view-details {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.view-details:hover {
+  background: #0056b3;
+}
+
+/* 分页样式 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.pagination a {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination a.active {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination a:hover:not(.active) {
+  background: #f0f0f0;
+}
