@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Housing Management</title>
-    <link rel="stylesheet" href="css/styleindex.css">
-</head>
-<body>
-<!-- 顶部导航栏 -->
-<header>
-    <div class="logo">
-        <img src="pics/logo.png" alt="Company Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="#">Apartment</a></li>
-            <li><a href="#">My Intention</a></li>
-            <li><a href="#">Additional Service</a></li>
-            <li><a href="login.php">Log in</a></li>
-            <li><a href="register.php">Sign up</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
-    </nav>
-</header>
+<?php include 'header.php'; ?>
 
 <!-- 搜索区域 -->
 <div class="search-container">
@@ -87,26 +62,10 @@
 <!--    <img src="images/step4.png" alt="Step 4">-->
 </div>
 
-<!-- 页脚 -->
-<footer>
-    <ul class="footer-links">
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Cooperation</a></li>
-        <li><a href="#">Agreement</a></li>
-        <li><a href="#">Contact us</a></li>
-        <li><a href="#">FAQ</a></li>
-    </ul>
-    <ul class="social-icons">
-        <li><a href="#">X</a></li>
-        <li><a href="#">Reddit</a></li>
-        <li><a href="#">Ins</a></li>
-    </ul>
-    <p>Copyright © 2077</p>
-</footer>
-</body>
+<?php include 'footer.php'; ?>
+
 <script>
     function updateOptions() {
         // 可以在此处动态更新选项
     }
 </script>
-</html>
