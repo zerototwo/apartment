@@ -248,10 +248,6 @@
                 </div>
             </div>
 
-
-
-
-
             <div id="propertyManagement" class="section hidden">
                 <h2>Property List</h2>
                 <div class="table-container">
@@ -292,9 +288,7 @@
                                 <td>Paid</td>
                                 <td>Approved</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=1'">Edit</button>
                                 </td>
                             </tr>
                             <tr>
@@ -313,9 +307,7 @@
                                 <td>Paid</td>
                                 <td>Pending</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=2'">Edit</button>
                                 </td>
                             </tr>
                             <tr>
@@ -334,9 +326,7 @@
                                 <td>Unpaid</td>
                                 <td>Approved</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=3'">Edit</button>
                                 </td>
                             </tr>
                             <tr>
@@ -355,9 +345,7 @@
                                 <td>Paid</td>
                                 <td>Approved</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=4'">Edit</button>
                                 </td>
                             </tr>
                             <tr>
@@ -376,9 +364,7 @@
                                 <td>Paid</td>
                                 <td>Pending</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=5'">Edit</button>
                                 </td>
                             </tr>
                             <tr>
@@ -397,9 +383,7 @@
                                 <td>Unpaid</td>
                                 <td>Approved</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=6'">Edit</button>
                                 </td>
                             </tr>
                             <tr>
@@ -418,9 +402,7 @@
                                 <td>Paid</td>
                                 <td>Pending</td>
                                 <td class="actions">
-                                    <button>Details</button>
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onclick="location.href='edit_property.html?id=7'">Edit</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -448,9 +430,9 @@
                                 <td>jane.doe@example.com</td>
                                 <td>555-1234</td>
                                 <td class="actions">
-                                    <button>Details</button>
+                                    <!-- <button>Details</button> -->
                                     <button>Edit</button>
-                                    <button>Delete</button>
+                                    <!-- <button>Delete</button> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -480,9 +462,9 @@
                                 <td>2023-01-01</td>
                                 <td>2023-12-31</td>
                                 <td class="actions">
-                                    <button>Details</button>
+                                    <!-- <button>Details</button> -->
                                     <button>Edit</button>
-                                    <button>Delete</button>
+                                    <!-- <button>Delete</button> -->
                                 </td>
                             </tr>
                         </tbody>
