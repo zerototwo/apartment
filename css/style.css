@@ -47,20 +47,20 @@ body {
 }
 
 .circle-left {
-    border-top: 3px solid #007bff;
-    border-left: 3px solid #007bff;
-    animation: rotate-left 3s linear infinite;
+    border-top: 3px solid darkorange;
+    border-left: 3px solid darkorange;
+    animation: rotate-left 2s linear infinite;
 }
 
 .circle-right {
-    border-bottom: 3px solid #ff5722;
-    border-right: 3px solid #ff5722;
-    animation: rotate-right 5s linear infinite;
+    border-bottom: 3px solid orangered;
+    border-right: 3px solid orangered;
+    animation: rotate-right 3s linear infinite;
 }
 
 .circle-mid {
-    border-bottom: 3px solid yellow;
-    border-right: 3px solid yellow;
+    border-bottom: 3px solid coral;
+    border-right: 3px solid coral;
     animation: rotate-mid 1s linear infinite;
 }
 
@@ -69,7 +69,6 @@ body {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
@@ -77,21 +76,19 @@ body {
 
 @keyframes rotate-right {
     0% {
-        transform: rotate(180deg);
+        transform: rotate(0deg);
     }
-
     100% {
-        transform: rotate(-180deg);
+        transform: rotate(360deg);
     }
 }
 
 @keyframes rotate-mid {
     0% {
-        transform: rotate(90deg);
+        transform: rotate(0deg);
     }
-
     100% {
-        transform: rotate(-270deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -205,3 +202,26 @@ body {
 /*p a:hover {*/
 /*    text-decoration: underline;*/
 /*}*/
+.form-container.captcha-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#captchaImage {
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+#refreshCaptcha {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#refreshCaptcha:hover {
+    background: #0056b3;
+}
