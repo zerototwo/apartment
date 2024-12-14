@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,17 +31,51 @@
 <!--        <button type="submit">Sign up</button>-->
 <!--    </form>-->
 <!--    <p>Already have an account? <a href="login1.php">Log in here</a></p>-->
-    <h1>Register</h1>
-    <form action="register_handler.php" method="POST">
+<h1>Register</h1>
+    <form action="register_handler.php" method="POST" enctype="multipart/form-data">
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="E-mail" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="password" name="confirm_password" placeholder="Confirm password" required>
+
+        <label for="avatar">Upload Avatar:</label>
+        <input type="file" id="avatar" name="avatar" accept="image/*" required>
+
+        <label for="captcha">Captcha:</label>
+        <div class="captcha-container">
+            <img id="captchaImage" src="generate_captcha.php" alt="Captcha">
+            <button type="button" id="refreshCaptcha">Refresh</button>
+        </div>
+        <input type="text" id="captchaInput" name="captcha" placeholder="Enter the text above" required>
+
+
         <input type="submit" value="Register">
     </form>
     <a href="login.php">Have an account already?Log in!</a>
     <a href="index.php">Go back</a>
 </div>
+
+<script>
+    // Refresh the CAPTCHA image
+    $("#refreshCaptcha").on("click", function () {
+        $("#captchaImage").attr("src", "generate_captcha.php?rand=" + Math.random());
+    });
+
+    // Validate CAPTCHA with AJAX
+    $("#registerForm").on("submit", function (e) {
+        e.preventDefault();
+        const form = this;
+        const captchaInput = $("#captchaInput").val();
+        $.post("validate_captcha.php", { captcha: captchaInput }, function (response) {
+            if (response.success) {
+                form.submit(); // If CAPTCHA is correct, submit the form
+            } else {
+                alert("Incorrect CAPTCHA. Please try again.");
+            }
+        }, "json");
+    });
+</script>
+    
 </body>
 </html>
 
