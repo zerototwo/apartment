@@ -8,7 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="logo-container">
@@ -31,15 +32,22 @@ session_start();
 <!--        <button type="submit">Sign up</button>-->
 <!--    </form>-->
 <!--    <p>Already have an account? <a href="login1.php">Log in here</a></p>-->
-<h1>Register</h1>
+    <h1>Register</h1>
     <form action="register_handler.php" method="POST" enctype="multipart/form-data">
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="E-mail" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="password" name="confirm_password" placeholder="Confirm password" required>
 
-        <label for="avatar">Upload Avatar:</label>
-        <input type="file" id="avatar" name="avatar" accept="image/*" required>
+<!--        <label for="avatar">Upload Avatar:</label>-->
+<!--        <input type="file" id="avatar" name="avatar" accept="image/*" required>-->
+        <div class="avatar-upload">
+            <label for="avatar" class="custom-file-upload">
+                <span>Choose Avatar</span>
+            </label>
+            <input type="file" id="avatar" name="avatar" accept="image/*" required>
+        </div>
+
 
         <label for="captcha">Captcha:</label>
         <div class="captcha-container">
@@ -75,7 +83,7 @@ session_start();
         }, "json");
     });
 </script>
-    
+
 </body>
 </html>
 
