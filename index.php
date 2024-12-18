@@ -24,11 +24,6 @@
             <li><a href="addiservice.php">Additional Service</a></li>
             <li><a href="login.php">Log in</a></li>
             <li><a href="register.php">Sign up</a></li>
-
-          
-                <a href="login.php">Log in</a>
-                <a href="register.php">Sign up</a>
-
             <li><a href="#">Help</a></li>
         </ul>
     </nav>
