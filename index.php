@@ -35,7 +35,7 @@
         <img src="pics/bg.png" alt="Company Logo">
         <div class="search-bar">
             <h1>Welcome...</h1>
-            <form action="#" method="GET">
+            <form action="apartments.php" method="GET">
                 <select name="category" id="category" onchange="updateOptions()">
                     <option value="cities">Cities</option>
                     <option value="apartments">Apartments</option>
