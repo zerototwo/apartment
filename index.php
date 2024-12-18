@@ -1,24 +1,3 @@
-<?php
-session_start();
-//require_once 'db.php';
-require_once 'connexion.php'; // 数据库连接文件
-$conn = db_connect();
-
-// 检查用户是否已登录
-$isLoggedIn = isset($_SESSION['user_Iduser']);
-$userData = [];
-
-if ($isLoggedIn) {
-    // 从数据库获取用户信息
-    $userId = $_SESSION['user_Iduser'];
-//    $this->pdo
-    $stmt = $this->pdo->prepare("SELECT username, avatar FROM user WHERE Iduser = ?");
-    $stmt->execute([$userId]);
-    $userData = $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,22 +22,12 @@ if ($isLoggedIn) {
             <li><a href="apartments.php">Apartment</a></li>
             <li><a href="#">My Intention</a></li>
             <li><a href="addiservice.php">Additional Service</a></li>
-<!--            <li><a href="login.php">Log in</a></li>-->
-<!--            <li><a href="register.php">Sign up</a></li>-->
+            <li><a href="login.php">Log in</a></li>
+            <li><a href="register.php">Sign up</a></li>
 
-            <?php if ($isLoggedIn): ?>
-                <!-- 显示头像与用户名 -->
-                <div class="user-info">
-                    <img src="<?php echo htmlspecialchars($userData['avatar']); ?>" alt="Avatar" class="avatar">
-                    <span><?php echo htmlspecialchars($userData['username']); ?></span>
-                </div>
-            <?php else: ?>
-                <!-- 游客状态显示登录和注册按钮 -->
-<!--                <a href="login.php" class="btn">Log in</a>-->
-<!--                <a href="register.php" class="btn">Sign up</a>-->
+          
                 <a href="login.php">Log in</a>
                 <a href="register.php">Sign up</a>
-            <?php endif; ?>
 
             <li><a href="#">Help</a></li>
         </ul>
