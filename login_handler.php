@@ -5,11 +5,11 @@
 	$password=$_POST["password"];
 	if($username=""||$password="")
 	{
-      echo "<script>alert('请输入用户名或密码！'); history.go(-1);</script>";  
+      echo "<script>alert('please input something！'); history.go(-1);</script>";  
 	}
 	else
 	{
-		$link=mysqli_connect("localhost","admin","123456","apt");//连接数据库
+		$link=mysqli_connect("localhost","root","123456","user_profile_db");//连接数据库
         mysqli_query($link,"set names utf8"); 
         $sql = "select username,password from user where username = '$_POST[username]' and password = '$_POST[password]'";  
 		$result=mysqli_query($link,$sql);//执行sql语句
