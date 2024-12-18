@@ -12,9 +12,9 @@ if ($username == '' || $password == '') {
 } else {
     // 数据库连接信息
     $servername = "localhost";
-    $adminuser = "admin";
+    $adminuser = "root";
     $adminpsw = "123456";
-    $dbname = "apt";
+    $dbname = "user_profile_db";
  
     // 创建连接
     $conn = new mysqli($servername, $adminuser, $adminpsw, $dbname);
