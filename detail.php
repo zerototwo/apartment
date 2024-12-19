@@ -85,7 +85,7 @@
                             <a href="#" class="phone-link">
                                 <i class="fas fa-phone"></i> Show phone number
                             </a>
-                            <form>
+                            <form action="contract.php" method="post">
                                 <div class="mb-3">
                                     <label>Name</label>
                                     <input type="text" class="form-control" required>
