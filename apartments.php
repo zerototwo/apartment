@@ -150,7 +150,9 @@ if (file_exists($debugImagePath)) {
                         </svg>
                     </button>
                 </div>
-                <img src="./pics/rental/<?php echo $imageNumber; ?>.png" alt="<?php echo $apartment['title']; ?>" onerror="this.onerror=null; this.src='pics/default.jpg';" />
+                <a href="detail.php">
+                    <img src="./pics/rental/<?php echo $imageNumber; ?>.png" alt="<?php echo $apartment['title']; ?>" onerror="this.onerror=null; this.src='pics/default.jpg';" />
+                </a>
                 <div class="apartment-info">
                     <h3><?php echo $apartment['title']; ?></h3>
                     <div class="basic-info">
