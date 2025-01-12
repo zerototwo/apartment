@@ -14,6 +14,12 @@
  Date: 20/11/2024 22:02:30
 */
 
+-- 判断数据库是否存在，如果不存在则创建
+CREATE DATABASE IF NOT EXISTS apartment;
+
+-- 使用该数据库
+USE apartment;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
