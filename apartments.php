@@ -65,81 +65,84 @@ if (file_exists($debugImagePath)) {
     <div class="apartments-container">
         <!-- 房源卡片 1-10 的循环 -->
         <?php
-        $apartments = [
-            [
-                'title' => 'Studio meublé proche campus',
-                'persons' => '1-2 pers.',
-                'type' => 'Studio',
-                'price' => '450',
-                'location' => 'Paris 5ème - Quartier Latin'
-            ],
-            [
-                'title' => 'Grand appartement lumineux',
-                'persons' => '2-3 pers.',
-                'type' => 'T3',
-                'price' => '850',
-                'location' => 'Lyon Centre - Part-Dieu'
-            ],
-            [
-                'title' => 'Colocation moderne',
-                'persons' => '4 pers.',
-                'type' => 'T4',
-                'price' => '400',
-                'location' => 'Marseille 1er'
-            ],
-            [
-                'title' => 'Studio rénové avec balcon',
-                'persons' => '1 pers.',
-                'type' => 'Studio',
-                'price' => '580',
-                'location' => 'Nice Centre'
-            ],
-            [
-                'title' => 'Appartement avec vue sur jardin',
-                'persons' => '2 pers.',
-                'type' => 'T2',
-                'price' => '650',
-                'location' => 'Bordeaux Chartrons'
-            ],
-            [
-                'title' => 'Duplex centre historique',
-                'persons' => '2-3 pers.',
-                'type' => 'T3',
-                'price' => '780',
-                'location' => 'Toulouse Capitole'
-            ],
-            [
-                'title' => 'Studio étudiant équipé',
-                'persons' => '1 pers.',
-                'type' => 'Studio',
-                'price' => '420',
-                'location' => 'Montpellier Facultés'
-            ],
-            [
-                'title' => 'Appartement contemporain',
-                'persons' => '2 pers.',
-                'type' => 'T2',
-                'price' => '700',
-                'location' => 'Nantes Centre'
-            ],
-            [
-                'title' => 'Colocation standing',
-                'persons' => '3 pers.',
-                'type' => 'T4',
-                'price' => '500',
-                'location' => 'Strasbourg - Orangerie'
-            ],
-            [
-                'title' => 'Studio neuf avec terrasse',
-                'persons' => '1-2 pers.',
-                'type' => 'Studio',
-                'price' => '550',
-                'location' => 'Lille Vieux-Lille'
-            ]
-        ];
+//        $apartments = [
+//            [
+//                'title' => 'Studio meublé proche campus',
+//                'persons' => '1-2 pers.',
+//                'type' => 'Studio',
+//                'price' => '450',
+//                'location' => 'Paris 5ème - Quartier Latin'
+//            ],
+//            [
+//                'title' => 'Grand appartement lumineux',
+//                'persons' => '2-3 pers.',
+//                'type' => 'T3',
+//                'price' => '850',
+//                'location' => 'Lyon Centre - Part-Dieu'
+//            ],
+//            [
+//                'title' => 'Colocation moderne',
+//                'persons' => '4 pers.',
+//                'type' => 'T4',
+//                'price' => '400',
+//                'location' => 'Marseille 1er'
+//            ],
+//            [
+//                'title' => 'Studio rénové avec balcon',
+//                'persons' => '1 pers.',
+//                'type' => 'Studio',
+//                'price' => '580',
+//                'location' => 'Nice Centre'
+//            ],
+//            [
+//                'title' => 'Appartement avec vue sur jardin',
+//                'persons' => '2 pers.',
+//                'type' => 'T2',
+//                'price' => '650',
+//                'location' => 'Bordeaux Chartrons'
+//            ],
+//            [
+//                'title' => 'Duplex centre historique',
+//                'persons' => '2-3 pers.',
+//                'type' => 'T3',
+//                'price' => '780',
+//                'location' => 'Toulouse Capitole'
+//            ],
+//            [
+//                'title' => 'Studio étudiant équipé',
+//                'persons' => '1 pers.',
+//                'type' => 'Studio',
+//                'price' => '420',
+//                'location' => 'Montpellier Facultés'
+//            ],
+//            [
+//                'title' => 'Appartement contemporain',
+//                'persons' => '2 pers.',
+//                'type' => 'T2',
+//                'price' => '700',
+//                'location' => 'Nantes Centre'
+//            ],
+//            [
+//                'title' => 'Colocation standing',
+//                'persons' => '3 pers.',
+//                'type' => 'T4',
+//                'price' => '500',
+//                'location' => 'Strasbourg - Orangerie'
+//            ],
+//            [
+//                'title' => 'Studio neuf avec terrasse',
+//                'persons' => '1-2 pers.',
+//                'type' => 'Studio',
+//                'price' => '550',
+//                'location' => 'Lille Vieux-Lille'
+//            ]
+//        ];
+        require_once 'conn.php';
 
+        $apartments = getApartmentsWithPictures();
         foreach ($apartments as $index => $apartment) {
-            $imageNumber = $index + 1; // 循环使用1-3号图片
+            $imageNumber = $index + 1;
+            $picture_64 = $apartment['picture'];
         ?>
             <div class="apartment-card">
                 <div class="card-header">
@@ -151,7 +154,7 @@ if (file_exists($debugImagePath)) {
                     </button>
                 </div>
                 <a href="detail.php">
-                    <img src="./pics/rental/<?php echo $imageNumber; ?>.png" alt="<?php echo $apartment['title']; ?>" onerror="this.onerror=null; this.src='pics/default.jpg';" />
+                   <?php echo '<img src="' . htmlspecialchars($picture_64) . '" alt="Room Image" width="300">'?>;
                 </a>
                 <div class="apartment-info">
                     <h3><?php echo $apartment['title']; ?></h3>
