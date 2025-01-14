@@ -41,7 +41,7 @@
                     <option value="apartments">Apartments</option>
                     <option value="universities">Universities</option>
                 </select>
-                <input type="text" placeholder="Search..." name="query">
+                <input type="text" placeholder="Search..." name="keyword">
                 <input type="submit" value="Search">
             </form>
             <div class="dropdown">

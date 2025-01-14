@@ -65,8 +65,20 @@ if (file_exists($debugImagePath)) {
     <div class="apartments-container">
         <?php
         require_once 'conn.php';
+        $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
+        // 设置分页参数
+        $itemsPerPage = 5;
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = max($page, 1);
+        $offset = ($page - 1) * $itemsPerPage;
 
-        $apartments = getApartmentsWithPictures();
+        // 查询符合条件的房源
+        $apartments = getApartmentsWithKeyword($keyword, $itemsPerPage, $offset);
+
+        // 计算总页数
+        $totalItems = getTotalApartmentsCount($keyword);
+        $totalPages = ceil($totalItems / $itemsPerPage);
+
         foreach ($apartments as $index => $apartment) {
             $imageNumber = $index + 1;
             $picture_64 = $apartment['picture'];
@@ -104,14 +116,24 @@ if (file_exists($debugImagePath)) {
         <?php } ?>
     </div>
 
-    <!-- 分页 -->
-    <div class="pagination">
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">Next</a>
-    </div>
+
+    <!-- 分页链接 -->
+<div class="pagination">
+    <?php if ($page > 1): ?>
+        <a href="?keyword=<?php echo urlencode($keyword); ?>&amp;page=<?php echo $page - 1; ?>">Previous</a>
+    <?php endif; ?>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?keyword=<?php echo urlencode($keyword); ?>&amp;page=<?php echo $i; ?>" class="<?php echo $i === $page ? 'active' : ''; ?>">
+            <?php echo $i; ?>
+        </a>
+    <?php endfor; ?>
+
+    <?php if ($page < $totalPages): ?>
+        <a href="?keyword=<?php echo urlencode($keyword); ?>&amp;page=<?php echo $page + 1; ?>">Next</a>
+    <?php endif; ?>
+</div>
+
 
     <!-- 页脚 -->
     <footer>
