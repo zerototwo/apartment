@@ -7,7 +7,7 @@
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="#">Apartment</a></li>
-            <li><a href="#">My Intention</a></li>
+            <li><a href="favorite.php">My Intention</a></li>
             <li><a href="#">Additional Service</a></li>
             <li><a href="login.php">Log in</a></li>
             <li><a href="register.php">Sign up</a></li>
