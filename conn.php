@@ -92,6 +92,38 @@ function getUserFavorites($userId) {
     return $favorites;
 }
 
+// 查询用户的收藏房源列表（分页）
+function getUserFavoriteApartments($userId, $limit, $offset) {
+  global $conn;
+
+  $sql = "SELECT r.room_id, r.title, r.location, r.price, COALESCE(p.content, '') AS picture
+          FROM favorites f
+          JOIN room r ON f.room_id = r.room_id
+          LEFT JOIN picture p ON r.room_id = p.room_id
+          WHERE f.user_id = ?
+          LIMIT ? OFFSET ?";
+
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("iii", $userId, $limit, $offset);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+// 获取用户收藏的房源总数
+function getTotalFavoritesCount($userId) {
+  global $conn;
+
+  $sql = "SELECT COUNT(*) AS total FROM favorites WHERE user_id = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $userId);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  return $result->fetch_assoc()['total'];
+}
+
 // 关闭数据库连接的函数
 function closeConnection()
 {
