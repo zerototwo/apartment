@@ -49,6 +49,7 @@ function getApartmentsWithKeyword($keyword, $limit, $offset)
   // 绑定参数
   $stmt = $conn->prepare($sql);
   $searchKeyword = '%' . $keyword . '%';
+  //防止 SQL 注入攻击
   $stmt->bind_param("ssssii", $searchKeyword, $searchKeyword, $searchKeyword, $searchKeyword, $limit, $offset);
   $stmt->execute();
   $result = $stmt->get_result();
