@@ -168,8 +168,9 @@ if (file_exists($debugImagePath)) {
         button.addEventListener('click', function () {
             const roomId = this.getAttribute('data-room-id');
             const userId = this.getAttribute('data-user-id');
+            const svgPath = this.querySelector('svg path');
 
-            fetch('add_favorite.php', {
+            fetch('toggle_favorite.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -179,11 +180,13 @@ if (file_exists($debugImagePath)) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                   
-                    // 修改 SVG 图标的 fill 属性为红色
-                    const svgPath = this.querySelector('svg path');
-                    svgPath.setAttribute('fill', 'red');
-                    alert("Successful collection");
+                    if (data.action === 'added') {
+                        svgPath.setAttribute('fill', 'red');
+                        alert("Added to favorites!");
+                    } else if (data.action === 'removed') {
+                        svgPath.setAttribute('fill', 'none');
+                        alert("Removed from favorites!");
+                    }
                 } else {
                     alert(data.message);
                 }
