@@ -61,60 +61,72 @@ if (file_exists($debugImagePath)) {
         </select>
     </div>
 
+  
+
     <!-- 房源列表 -->
-    <div class="apartments-container">
-        <?php
-        require_once 'conn.php';
-        $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
-        // 设置分页参数
-        $itemsPerPage = 5;
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $page = max($page, 1);
-        $offset = ($page - 1) * $itemsPerPage;
+<div class="apartments-container">
+    <?php
+    require_once 'conn.php';
 
-        // 查询符合条件的房源
-        $apartments = getApartmentsWithKeyword($keyword, $itemsPerPage, $offset);
+    // 获取关键词
+    $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
-        // 计算总页数
-        $totalItems = getTotalApartmentsCount($keyword);
-        $totalPages = ceil($totalItems / $itemsPerPage);
+    // 设置分页参数
+    $itemsPerPage = 5;
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $page = max($page, 1);
+    $offset = ($page - 1) * $itemsPerPage;
 
-        foreach ($apartments as $index => $apartment) {
-            $imageNumber = $index + 1;
-            $picture_64 = $apartment['picture'];
-        ?>
-            <div class="apartment-card">
-                <div class="card-header">
-                    <span class="featured-tag">À la une</span>
-                    <button class="favorite-btn">
-                        <svg viewBox="0 0 24 24" width="24" height="24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="none" stroke="currentColor"/>
-                        </svg>
-                    </button>
-                </div>
-                <a href="detail.php">
-                   <?php echo '<img src="' . htmlspecialchars($picture_64) . '" alt="Room Image" width="300">'?>;
-                </a>
-                <div class="apartment-info">
-                    <h3><?php echo $apartment['title']; ?></h3>
-                    <div class="basic-info">
-                        <span><?php echo $apartment['persons']; ?></span>
-                        <span>•</span>
-                        <span><?php echo $apartment['type']; ?></span>
-                    </div>
-                    <div class="payment-info">
-                        <span class="payment-badge">Paiement en ligne</span>
-                    </div>
-                    <div class="price-info">
-                        <span class="price-label">à partir de</span>
-                        <span class="price"><?php echo $apartment['price']; ?> €</span>
-                        <span class="price-period">/ mois</span>
-                    </div>
-                    <p class="location"><?php echo $apartment['location']; ?></p>
-                </div>
+    // 查询符合条件的房源
+    $apartments = getApartmentsWithKeyword($keyword, $itemsPerPage, $offset);
+
+    // 获取用户已收藏的房源列表
+    $userId = 1; // 假设当前用户 ID 为 1
+    $favorites = getUserFavorites($userId);
+
+    // 计算总页数
+    $totalItems = getTotalApartmentsCount($keyword);
+    $totalPages = ceil($totalItems / $itemsPerPage);
+
+    foreach ($apartments as $index => $apartment) {
+        $isFavorited = in_array($apartment['room_id'], $favorites);
+        $fillColor = $isFavorited ? 'red' : 'none';
+        $strokeColor = $isFavorited ? 'red' : 'currentColor';
+    ?>
+        <div class="apartment-card">
+            <div class="card-header">
+                <span class="featured-tag">À la une</span>
+                <button class="favorite-btn" data-room-id="<?php echo $apartment['room_id']; ?>" data-user-id="<?php echo $userId; ?>">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+                              fill="<?php echo $fillColor; ?>" 
+                              stroke="<?php echo $strokeColor; ?>"/>
+                    </svg>
+                </button>
             </div>
-        <?php } ?>
-    </div>
+            <a href="detail.php">
+                <?php echo '<img src="' . htmlspecialchars($apartment['picture']) . '" alt="Room Image" width="300">'; ?>
+            </a>
+            <div class="apartment-info">
+                <h3><?php echo htmlspecialchars($apartment['title']); ?></h3>
+                <div class="basic-info">
+                    <span><?php echo htmlspecialchars($apartment['persons']); ?></span>
+                    <span>•</span>
+                    <span><?php echo htmlspecialchars($apartment['type']); ?></span>
+                </div>
+                <div class="payment-info">
+                    <span class="payment-badge">Paiement en ligne</span>
+                </div>
+                <div class="price-info">
+                    <span class="price-label">à partir de</span>
+                    <span class="price"><?php echo htmlspecialchars($apartment['price']); ?> €</span>
+                    <span class="price-period">/ mois</span>
+                </div>
+                <p class="location"><?php echo htmlspecialchars($apartment['location']); ?></p>
+            </div>
+        </div>
+    <?php } ?>
+</div>
 
 
     <!-- 分页链接 -->
@@ -151,5 +163,36 @@ if (file_exists($debugImagePath)) {
         </ul>
         <p>Copyright © 2077</p>
     </footer>
+    <script>
+    document.querySelectorAll('.favorite-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const roomId = this.getAttribute('data-room-id');
+            const userId = this.getAttribute('data-user-id');
+
+            fetch('add_favorite.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ room_id: roomId, user_id: userId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                   
+                    // 修改 SVG 图标的 fill 属性为红色
+                    const svgPath = this.querySelector('svg path');
+                    svgPath.setAttribute('fill', 'red');
+                    alert("Successful collection");
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
 </body>
 </html> 

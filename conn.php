@@ -75,6 +75,23 @@ function getTotalApartmentsCount($keyword)
   return $result->fetch_assoc()['total'];
 }
 
+// 获取用户已收藏的房源列表
+function getUserFavorites($userId) {
+    global $conn;
+
+    $sql = "SELECT room_id FROM favorites WHERE user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $favorites = [];
+    while ($row = $result->fetch_assoc()) {
+        $favorites[] = $row['room_id'];
+    }
+    return $favorites;
+}
+
 // 关闭数据库连接的函数
 function closeConnection()
 {

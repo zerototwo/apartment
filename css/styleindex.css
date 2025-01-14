@@ -362,3 +362,18 @@ footer ul li a:hover {
     background-color: #f1f1f1;
 }
 
+.favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.favorite-btn svg {
+    stroke: #000;
+}
+
+.favorite-btn.favorited svg {
+    stroke: #e74c3c; /* 收藏后变红 */
+    fill: #e74c3c;
+}
+
