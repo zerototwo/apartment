@@ -11,23 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 </head>
 <body>
-<!-- 顶部导航栏 -->
-<header>
-    <div class="logo">
-        <img src="pics/logo.png" alt="Company Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="apartments.php">Apartment</a></li>
-            <li><a href="#">My Intention</a></li>
-            <li><a href="addiservice.php">Additional Service</a></li>
-            <li><a href="login.php">Log in</a></li>
-            <li><a href="register.php">Sign up</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
-    </nav>
-</header>
+
+<?php include 'header.php';?>
 
 <!-- 搜索区域 -->
 <div class="search-container">

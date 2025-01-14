@@ -21,24 +21,7 @@ if (file_exists($debugImagePath)) {
     <link rel="stylesheet" href="css/styleapartments.css">
 </head>
 <body>
-    <!-- 顶部导航栏 -->
-    <header>
-        <div class="logo">
-            <img src="pics/logo.png" alt="Company Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="#">Apartment</a></li>
-                <li><a href="#">My Intention</a></li>
-                <li><a href="#">Additional Service</a></li>
-                <li><a href="login.php">Log in</a></li>
-                <li><a href="register.php">Sign up</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-        </nav>
-    </header>
-
+<?php include 'header.php';?>
     <!-- 筛选器部分 -->
     <div class="filters">
         <select name="price">
