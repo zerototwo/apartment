@@ -16,7 +16,19 @@ header {
 }
 
 header .logo img {
-    height: 50px;
+    height: 80px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user-info .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 /* 导航菜单样式 */
