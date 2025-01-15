@@ -19,19 +19,8 @@ header .logo img {
     height: 50px;
 }
 
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.user-info .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-nav ul {
+/* 导航菜单样式 */
+.nav-menu {
     list-style: none;
     display: flex;
     gap: 15px;
@@ -39,7 +28,11 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a {
+.nav-menu li {
+    display: inline-block;
+}
+
+.nav-menu li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
@@ -47,7 +40,7 @@ nav ul li a {
     transition: 0.3s ease;
 }
 
-nav ul li a:hover {
+.nav-menu li a:hover {
     background: #007bff;
     color: #fff;
     border-radius: 5px;
@@ -61,7 +54,6 @@ nav ul li a:hover {
 }
 
 .background-image {
-    /*background: url(../pics/bg.png) no-repeat center center/cover;*/
     height: 450px;
 }
 
@@ -73,7 +65,9 @@ nav ul li a:hover {
     color: #fff;
 }
 
-.search-bar select, .search-bar input[type="text"], .search-bar input[type="submit"] {
+.search-bar select,
+.search-bar input[type="text"],
+.search-bar input[type="submit"] {
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
@@ -91,10 +85,6 @@ nav ul li a:hover {
     transform: scale(1.1);
     transition: transform 0.5s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.search-container.dropdown.dropdown-options{
-    background: white;
 }
 
 .maincontainer {
@@ -117,10 +107,6 @@ nav ul li a:hover {
     width: 23%;
 }
 
-.simage{
-    width: 80%;
-}
-
 .responsive-image {
     width: 100%;
     height: auto;
@@ -137,28 +123,13 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* 合作伙伴卡片 */
 .partner-card {
     padding: 15px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
-
-/*.daily-news {*/
-/*    width: 80%;*/
-/*    margin: 20px auto;*/
-/*    text-align: center;*/
-/*}*/
-/*.daily-news .news-carousel img {*/
-/*    width: 100%;*/
-/*    border-radius: 8px;*/
-/*}*/
-/*.daily-news p {*/
-/*    font-size: 16px;*/
-/*    margin-top: 10px;*/
-/*}*/
-
+/* 缩略图样式 */
 .thumbnail-container {
     width: 15%;
     display: flex;
@@ -214,57 +185,8 @@ nav ul li a:hover {
     transition: transform 0.3s ease, transform-origin 0.3s ease;
 }
 
-/* 自定义箭头按钮 */
-.slick-prev, .slick-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    border: none;
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-    transition: background-color 0.3s ease;
-}
-
-.slick-prev {
-    left: 10px;
-}
-.slick-next {
-    right: 10px;
-}
-
-.slick-prev:hover, .slick-next:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
 /* 特性区域 */
-/*.features {*/
-/*    display: flex;*/
-/*    justify-content: space-around;*/
-/*    padding: 20px;*/
-/*    background: #fff;*/
-/*}*/
-
-/*.feature{*/
-/*    width: 200px;*/
-/*}*/
-
-/*.feature img {*/
-/*    width: 50px;*/
-/*    height: 50px;*/
-/*}*/
-
-/*.feature:hover {*/
-/*    transform: scale(1.1);*/
-/*    transition: transform 0.5s ease;*/
-/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
-/*    background: #cccccc;*/
-/*}*/
-
-.steps img{
+.steps img {
     margin: auto;
     display: block;
     width: 1000px;
@@ -275,6 +197,7 @@ nav ul li a:hover {
     flex-direction: column;
     gap: 20px;
 }
+
 .feature {
     position: relative;
     width: 100%;
@@ -289,53 +212,26 @@ nav ul li a:hover {
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
+
 .feature:hover {
     transform: scale(1.05);
 }
+
 .feature-content {
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+
 .feature:hover .feature-content {
     opacity: 1;
 }
-.feature img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-.feature h3 {
-    font-size: 24px;
-    margin: 10px 0;
-}
-.feature p {
-    font-size: 16px;
-}
 
-
-/* 页脚 */
 footer {
     text-align: center;
     padding: 20px;
     background: #f4f4f9;
 }
-
-footer ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
-
-footer ul li a:hover {
-    transform: scale(1.1);
-    transition: transform 0.5s ease;
-    color: #007bff;
-}
-
 
 .pagination {
     display: flex;
@@ -362,18 +258,85 @@ footer ul li a:hover {
     background-color: #f1f1f1;
 }
 
-.favorite-btn {
-    background: none;
-    border: none;
+/* 🆕 汉堡按钮样式 */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
 }
 
-.favorite-btn svg {
-    stroke: #000;
+.burger div {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+/* 🆕 小屏幕时的导航栏样式 */
+/* 小屏幕时的导航栏样式 */
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 250px;
+        background-color: rgba(65, 81, 101, 0.95);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0;
+        z-index: 999;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .nav-menu li a {
+        color: #dadbdd;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .nav-menu li a:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+}/* 汉堡按钮点击动画 */
+.burger.active .top-line {
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
-.favorite-btn.favorited svg {
-    stroke: #e74c3c; /* 收藏后变红 */
-    fill: #e74c3c;
+.burger.active .middle-line {
+    opacity: 0;
 }
 
+.burger.active .bottom-line {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
