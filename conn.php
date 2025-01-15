@@ -13,6 +13,21 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+function db_connect() {
+    $servername = "localhost:3306";
+    $username = "admin";
+    $password = "123456";
+    $dbname = "apt";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        die("ERROR: " . $e->getMessage());
+    }
+}
+
 // 查询房间和图片的函数
 function getApartmentsWithPictures()
 {
