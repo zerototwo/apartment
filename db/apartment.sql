@@ -92,3 +92,35 @@ create table if not exists user
     row_format = DYNAMIC;
 
 
+
+-- 创建表 properties
+CREATE TABLE IF NOT EXISTS properties (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    property_name VARCHAR(255) NOT NULL,
+    contact VARCHAR(15) NOT NULL,
+    owner_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    size VARCHAR(50) NOT NULL,
+    lease_start DATE NOT NULL,
+    lease_end DATE NOT NULL,
+    price_per_day DECIMAL(10, 2) NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    payment_status VARCHAR(50) NOT NULL,
+    approval_status VARCHAR(50) NOT NULL,
+    image_path VARCHAR(255) NOT NULL
+);
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(20) NOT NULL
+);
+CREATE TABLE contracts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    property_name VARCHAR(255) NOT NULL,
+    tenant_name VARCHAR(255) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
+);
