@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'connexion.php'; // 数据库连接文件
+require_once 'conn.php'; // 数据库连接文件
 $conn = db_connect();
 
 // 检查用户是否已登录
