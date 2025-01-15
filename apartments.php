@@ -87,6 +87,7 @@ if (file_exists($debugImagePath)) {
                     </svg>
                 </button>
             </div>
+            <!--  Prevent xss attacks  -->
             <a href="detail.php">
                 <?php echo '<img src="' . htmlspecialchars($apartment['picture']) . '" alt="Room Image" width="300">'; ?>
             </a>
