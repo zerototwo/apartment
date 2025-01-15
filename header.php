@@ -35,7 +35,6 @@ if ($isLoggedIn) {
             <li><a href="#">Apartment</a></li>
             <li><a href="favorite.php">My Intention</a></li>
             <li><a href="addiservice.php">Additional Service</a></li>
-            <li><a href="#">Help</a></li>
             <li><a href="contract.php">Help</a></li>
             <?php if ($isLoggedIn && !empty($userData)): ?>
                 <li>
