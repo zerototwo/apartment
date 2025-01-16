@@ -19,25 +19,7 @@
 <!--    </nav>-->
 <!--</header>-->
 
-<header>
-    <div class="logo">
-        <img src="pics/logo.png" alt="Company Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="#">Apartment</a></li>
-            <li><a href="#">My Intention</a></li>
-            <li><a href="#">Additional Service</a></li>
-            <!--            <li><a href="login.php">Log in</a></li>-->
-            <!--            <li><a href="register.php">Sign up</a></li>-->
-            <a href="login.php" class="btn">Log in</a>
-            <a href="register.php" class="btn">Sign up</a>
-
-            <li><a href="#">Help</a></li>
-        </ul>
-    </nav>
-</header>
+<?php include 'header.php';?>
 
 <!-- 主内容 -->
 <main>
