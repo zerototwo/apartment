@@ -93,6 +93,12 @@ create table if not exists user
 
 
 
+CREATE TABLE `owners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `contact` varchar(15),
+  PRIMARY KEY (`id`)
+);
 -- 创建表 properties
 CREATE TABLE IF NOT EXISTS properties (
     id INT AUTO_INCREMENT PRIMARY KEY,

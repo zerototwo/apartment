@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "Qwerty@12345";
-$database = "rental_management";
+$database = "apartment";
 
 // 创建数据库连接
 $conn = new mysqli($host, $username, $password, $database);

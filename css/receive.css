@@ -73,14 +73,16 @@ body {
     font-size: 16px;
 }
 
+
 .sidebar ul li a:hover {
-    background-color: #1abc9c;
+    background-color: #1abc9c; /* 悬停效果 */
     color: #fff;
 }
 
 .sidebar ul li a.active {
-    background-color: #16a085;
-    color: #fff;
+    background-color: #16a085; /* 高亮背景颜色 */
+    color: #fff; /* 高亮字体颜色 */
+    font-weight: bold;
 }
 
 /* Content Area */

@@ -3,7 +3,7 @@
 $host = "localhost";
 $username = "root";
 $password = "Qwerty@12345";
-$database = "rental_management";
+$database = "apartment";
 
 // 创建数据库连接
 $conn = new mysqli($host, $username, $password, $database);
@@ -44,16 +44,17 @@ if (!empty($search)) {
     <link rel="stylesheet" href="css/receive.css"> <!-- 引入统一样式 -->
 </head>
 <body>
+
     <div class="admin-panel">
-        <div class="sidebar">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="property_list.php" class="active">Property Management</a></li>
-                <li><a href="user_management.php">User Management</a></li>
-                <li><a href="contract_management.php">Contract Management</a></li>
-                <!-- <li><a href="logout.php">Logout</a></li> -->
-            </ul>
-        </div>
+    <div class="sidebar">
+    <ul>
+        <li><a href="index.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">Home</a></li>
+        <li><a href="property_list.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'property_list.php' ? 'active' : ''; ?>">Property Management</a></li>
+        <li><a href="user_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'user_management.php' ? 'active' : ''; ?>">User Management</a></li>
+        <li><a href="contract_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contract_management.php' ? 'active' : ''; ?>">Contract Management</a></li>
+    </ul>
+</div>
+
         <div class="content">
             <h1>Property List</h1>
             <form method="GET" action="property_list.php" class="search-form">
