@@ -163,7 +163,7 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-/* 模态框背景 */
+
 .modal {
     position: fixed;
     z-index: 1000;
@@ -171,41 +171,49 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: none; /* 默认隐藏 */
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4); /* 背景半透明效果 */
+    display: flex; /* 使用 flex 布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 600px;
-    max-width: 90%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background-color: #fff; /* 白色背景 */
+    padding: 20px; /* 内边距 */
+    border-radius: 8px; /* 圆角 */
+    width: 400px; /* 固定宽度 */
+    text-align: left; /* 保持左对齐 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+    position: relative; /* 保证关闭按钮定位正确 */
 }
 
-#editForm div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-#editForm label {
-    flex: 1;
-    text-align: right;
-    margin-right: 10px;
+
+/* 关闭按钮 */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aaa;
+    font-size: 24px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-#editForm input {
-    flex: 2;
+.close:hover, .close:focus {
+    color: black;
+}
+
+/* 表单样式 */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: calc(100% - 20px);
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -213,4 +221,16 @@ button:hover {
 .form-actions {
     display: flex;
     justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007bff;
+    color: white;
 }

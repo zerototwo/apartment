@@ -16,17 +16,21 @@ if ($conn->connect_error) {
     exit;
 }
 
-// 获取前端传递的数据
+// 获取前端数据
 $data = json_decode(file_get_contents('php://input'), true);
 
-// 检查输入数据完整性
-if (!isset($data['id'], $data['property_name'], $data['contact'], $data['owner_name'], $data['total'])) {
-    echo json_encode(["success" => false, "error" => "Invalid input"]);
-    exit;
+// 必填字段列表
+$requiredFields = ['property_name', 'contact', 'owner_name', 'phone', 'type', 'address', 'size', 'lease_start', 'lease_end', 'price_per_day', 'total'];
+
+// 检查每个必填字段是否为空
+foreach ($requiredFields as $field) {
+    if (empty($data[$field]) || trim($data[$field]) === '') {
+        echo json_encode(["success" => false, "error" => "The field \"$field\" is required!"]);
+        exit;
+    }
 }
 
 // 提取数据
-$id = $data['id'];
 $property_name = $data['property_name'];
 $contact = $data['contact'];
 $owner_name = $data['owner_name'];
@@ -37,17 +41,18 @@ $size = $data['size'];
 $lease_start = $data['lease_start'];
 $lease_end = $data['lease_end'];
 $price_per_day = $data['price_per_day'];
-$total = $data['total']; // 确保 total 被包含
-$payment_status = $data['payment_status'];
-$approval_status = $data['approval_status'];
-$image_path = $data['image_path'];
+$total = $data['total']; // 新增字段
+$payment_status = $data['payment_status'] ?? 'Pending';
+$approval_status = $data['approval_status'] ?? 'Pending';
+$image_path = $data['image_path'] ?? '';
 
-// 执行更新
-$sql = "UPDATE properties SET property_name=?, contact=?, owner_name=?, phone=?, type=?, address=?, size=?, lease_start=?, lease_end=?, price_per_day=?, total=?, payment_status=?, approval_status=?, image_path=? WHERE id=?";
+// 插入数据库
+$sql = "INSERT INTO properties (property_name, contact, owner_name, phone, type, address, size, lease_start, lease_end, price_per_day, total, payment_status, approval_status, image_path) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
-    $stmt->bind_param("sssssssssdssssi", $property_name, $contact, $owner_name, $phone, $type, $address, $size, $lease_start, $lease_end, $price_per_day, $total, $payment_status, $approval_status, $image_path, $id);
+    $stmt->bind_param("sssssssssdssss", $property_name, $contact, $owner_name, $phone, $type, $address, $size, $lease_start, $lease_end, $price_per_day, $total, $payment_status, $approval_status, $image_path);
 
     if ($stmt->execute()) {
         echo json_encode(["success" => true]);

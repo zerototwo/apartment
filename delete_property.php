@@ -38,4 +38,3 @@ $conn->close();
 // 重定向回主页面
 header("Location: property_list.php");
 exit;
-?>

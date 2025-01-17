@@ -37,23 +37,25 @@ if (!empty($search)) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Management</title>
     <link rel="stylesheet" href="css/receive.css"> <!-- 引入统一样式 -->
 </head>
+
 <body>
 
     <div class="admin-panel">
-    <div class="sidebar">
-    <ul>
-        <li><a href="index.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">Home</a></li>
-        <li><a href="property_list.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'property_list.php' ? 'active' : ''; ?>">Property Management</a></li>
-        <li><a href="user_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'user_management.php' ? 'active' : ''; ?>">User Management</a></li>
-        <li><a href="contract_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contract_management.php' ? 'active' : ''; ?>">Contract Management</a></li>
-    </ul>
-</div>
+        <div class="sidebar">
+            <ul>
+                <li><a href="index.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">Home</a></li>
+                <li><a href="property_list.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'property_list.php' ? 'active' : ''; ?>">Property Management</a></li>
+                <li><a href="user_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'user_management.php' ? 'active' : ''; ?>">User Management</a></li>
+                <li><a href="contract_management.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contract_management.php' ? 'active' : ''; ?>">Contract Management</a></li>
+            </ul>
+        </div>
 
         <div class="content">
             <h1>Property List</h1>
@@ -117,6 +119,7 @@ if (!empty($search)) {
         </div>
     </div>
 </body>
+
 </html>
 
 <?php

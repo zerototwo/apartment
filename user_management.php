@@ -34,12 +34,14 @@ if (!empty($search)) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
     <link rel="stylesheet" href="css/receive.css"> <!-- 引入统一样式 -->
 </head>
+
 <body>
     <div class="admin-panel">
         <div class="sidebar">
@@ -93,6 +95,7 @@ if (!empty($search)) {
         </div>
     </div>
 </body>
+
 </html>
 
 <?php

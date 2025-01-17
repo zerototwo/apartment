@@ -6,8 +6,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2ff; /* Light blue-gray background */
+            background-color: #f2f2ff;
+            /* Light blue-gray background */
         }
+
         header {
             display: flex;
             align-items: center;
@@ -15,15 +17,18 @@
             border-bottom: 2px solid #ddd;
             padding: 10px 20px;
         }
+
         header img {
             height: 60px;
             margin-right: 20px;
         }
+
         header h1 {
             margin: 0;
             font-size: 2em;
             color: #333;
         }
+
         main {
             max-width: 900px;
             margin: 20px auto;
@@ -32,6 +37,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         section h2 {
             font-size: 1.6em;
             color: #333;
@@ -39,6 +45,7 @@
             border-bottom: 2px solid #ddd;
             padding-bottom: 5px;
         }
+
         .faq details summary {
             font-weight: bold;
             padding: 10px;
@@ -47,17 +54,22 @@
             cursor: pointer;
             margin-bottom: 5px;
         }
+
         .contact-form label {
             font-weight: bold;
             margin-bottom: 5px;
         }
-        .contact-form input, .contact-form textarea, .contact-form select {
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
+
         .contact-form button {
             background-color: #6c63ff;
             color: white;
@@ -66,6 +78,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .contact-form button:hover {
             background-color: #5753d4;
         }
@@ -100,7 +113,7 @@
         <form class="contact-form" action="/submit_form" method="POST">
             <label for="name">Name *</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            
+
             <label for="email">Email Address *</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
