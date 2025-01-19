@@ -10,7 +10,7 @@ $userData = [];
 if ($isLoggedIn) {
     // 从数据库获取用户信息
     $userId = $_SESSION['user_Iduser'];
-    $stmt = $conn->prepare("SELECT username, avatar FROM user WHERE Iduser = ?");
+    $stmt = $conn->prepare("SELECT username, avatar, userType FROM user WHERE Iduser = ?");
     $stmt->execute([$userId]);
     $userData = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$userData) {
@@ -45,18 +45,24 @@ if ($isLoggedIn) {
             <li><a href="#">Apartment</a></li>
             <li><a href="favorite.php">My Intention</a></li>
             <li><a href="addiservice.php">Additional Service</a></li>
-            <li><a href="contract.php">Help</a></li>
+            <li><a href="reset_password.php">Help</a></li>
             <?php if ($isLoggedIn && !empty($userData)): ?>
                 <li>
                     <div class="user-info">
                         <img src="<?php echo htmlspecialchars($userData['avatar']); ?>" alt="Avatar" class="avatar">
-                        <a href="#"><?php echo htmlspecialchars($userData['username']); ?></a>
+                        <a href="<?php
+                        // 根据 userType 设置跳转链接
+                        echo $userData['userType'] === 'tenant' ? 'profile.php' : 'ownerpage.php';
+                        ?>">
+                            <?php echo htmlspecialchars($userData['username']); ?>
+                        </a>
                     </div>
                 </li>
             <?php else: ?>
                 <li><a href="login.php">Log in</a></li>
                 <li><a href="register.php">Sign up</a></li>
             <?php endif; ?>
+
         </ul>
 
         <!-- 汉堡菜单按钮 -->
