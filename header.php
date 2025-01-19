@@ -42,7 +42,7 @@ if ($isLoggedIn) {
     <nav>
         <ul class="nav-menu">
             <li><a href="index.php">Home</a></li>
-            <li><a href="#">Apartment</a></li>
+            <li><a href="list.php">Apartment</a></li>
             <li><a href="favorite.php">My Intention</a></li>
             <li><a href="addiservice.php">Additional Service</a></li>
             <li><a href="reset_password.php">Help</a></li>
