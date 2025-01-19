@@ -33,7 +33,7 @@ function getApartmentsWithPictures()
     $database = "apartment";
 
 // 创建数据库连接
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+  $conn = new mysqli($servername, $username, $password, $database);
   $sql = "SELECT r.room_id, r.title, r.persons, r.type, r.price, r.location, p.content AS picture
           FROM room r
           LEFT JOIN picture p ON r.room_id = p.room_id";
