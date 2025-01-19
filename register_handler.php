@@ -6,6 +6,7 @@ header("Content-type: text/html; charset=utf-8");
 $username = isset($_POST["username"]) ? $_POST["username"] : '';
 $password = isset($_POST["password"]) ? $_POST["password"] : '';
 $email = isset($_POST["email"]) ? $_POST["email"] : '';
+$userType = isset($_POST["userType"]) ? $_POST["userType"] : 'tenant';
 
 // 检查头像文件是否上传
 if (!isset($_FILES["avatar"]) || $_FILES["avatar"]["error"] != 0) {
@@ -77,9 +78,9 @@ if (!move_uploaded_file($_FILES["avatar"]["tmp_name"], $targetFilePath)) {
 }
 
 // 注册新用户，保存头像路径到数据库
-$sql_insert = "INSERT INTO user (username, password, email, avatar) VALUES (?, ?, ?, ?)";
+$sql_insert = "INSERT INTO user (username, password, email, avatar, userType) VALUES (?, ?, ?, ?,?)";
 $stmt_insert = $conn->prepare($sql_insert);
-$stmt_insert->bind_param("ssss", $username, $password, $email, $targetFilePath);
+$stmt_insert->bind_param("sssss", $username, $password, $email, $targetFilePath, $userType);
 if ($stmt_insert->execute()) {
     echo "<script>alert('注册成功！'); window.location='login.php';</script>";
 } else {
