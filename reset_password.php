@@ -52,11 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
 </head>
 <body>
 <div class="form-container">
-    <h2>Reset Password</h2>
+    <h1>Reset Password</h1>
 
     <?php if ($error): ?>
         <p class="error"><?php echo $error; ?></p>
@@ -66,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="success"><?php echo $success; ?></p>
         <a href="login.php" class="btn">Go to Login</a>
     <?php elseif ($step == 1): ?>
-        <!-- 步骤1：输入用户名和邮箱 -->
         <form method="POST" action="reset_password.php">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -74,18 +74,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
-            <button type="submit">Verify</button>
+            <button type="submit" class="btn">Verify</button>
+            <a href="login.php" class="link">Back to login</a>
         </form>
     <?php elseif ($step == 2): ?>
-        <!-- 步骤2：输入新密码 -->
         <form method="POST" action="reset_password.php">
             <p>Hello, <?php echo htmlspecialchars($_SESSION['reset_username']); ?>, please enter your new password.</p>
             <label for="new_password">New Password:</label>
             <input type="password" id="new_password" name="new_password" required>
 
-            <button type="submit">Reset Password</button>
+            <button type="submit" class="btn">Reset Password</button>
+            <a href="login.php" class="link">Back to login</a>
         </form>
     <?php endif; ?>
 </div>
 </body>
 </html>
+
