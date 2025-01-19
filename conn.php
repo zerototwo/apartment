@@ -13,25 +13,27 @@ $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password)
 // }
 
 function db_connect() {
-    $servername = "localhost:3306";
-    $username = "admin";
-    $password = "123456";
-    $dbname = "apt";
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $database = "apartment";
 
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
-    } catch (PDOException $e) {
-        die("ERROR: " . $e->getMessage());
-    }
+// 创建数据库连接
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    return $conn;
 }
 
 // 查询房间和图片的函数
 function getApartmentsWithPictures()
 {
   global $conn;
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $database = "apartment";
 
+// 创建数据库连接
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
   $sql = "SELECT r.room_id, r.title, r.persons, r.type, r.price, r.location, p.content AS picture
           FROM room r
           LEFT JOIN picture p ON r.room_id = p.room_id";
@@ -50,7 +52,7 @@ function getApartmentsWithPictures()
 
 function getApartmentsWithKeyword($keyword, $limit, $offset)
 {
-  global $conn;
+   $conn = db_connect();
 
   // 使用通配符进行模糊查询
   $sql = "SELECT r.room_id, r.title, r.persons, r.type, r.price, r.location, 
