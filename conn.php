@@ -6,12 +6,11 @@ $password = "root";
 $database = "apartment";
 
 // 创建数据库连接
-$conn = new mysqli($servername, $username, $password, $database);
-
-// 检查连接
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+$conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+// // 检查连接
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
 
 function db_connect() {
     $servername = "localhost:3306";
