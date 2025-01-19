@@ -19,7 +19,7 @@ function db_connect() {
     $database = "apartment";
 
 // 创建数据库连接
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $conn = new mysqli($servername, $username, $password, $database);
     return $conn;
 }
 
