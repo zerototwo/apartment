@@ -58,6 +58,9 @@ if ($isLoggedIn) {
                         </a>
                     </div>
                 </li>
+                 <li>
+                    <a href="logout.php" class="logout-btn">Log Out</a>
+                </li>
             <?php else: ?>
                 <li><a href="login.php">Log in</a></li>
                 <li><a href="register.php">Sign up</a></li>
