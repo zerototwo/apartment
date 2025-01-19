@@ -17,13 +17,13 @@ if (file_exists($debugImagePath)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Apartments</title>
-    <link rel="stylesheet" href="css/styleindex.css">
-    <link rel="stylesheet" href="css/styleapartments.css">
+    <link rel="stylesheet" href="./css/styleindex.css">
+    <link rel="stylesheet" href="./css/styleapartments.css">
 </head>
 <body>
 <?php include 'header.php';?>
     <!-- 筛选器部分 -->
-    <div class="filters">
+    <!-- <div class="filters">
         <select name="price">
             <option value="">Price Range</option>
             <option value="0-500">€0 - €500</option>
@@ -42,7 +42,7 @@ if (file_exists($debugImagePath)) {
             <option value="lyon">Lyon</option>
             <option value="marseille">Marseille</option>
         </select>
-    </div>
+    </div> -->
 
   
 
