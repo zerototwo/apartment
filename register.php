@@ -34,6 +34,11 @@ session_start();
 <!--    <p>Already have an account? <a href="login1.php">Log in here</a></p>-->
     <h1>Register</h1>
     <form action="register_handler.php" method="POST" enctype="multipart/form-data">
+        <label for="userType">userType:</label>
+        <select id="userType" name="userType" onchange="toggleUserType()">
+            <option value="tenant">tenant</option>
+            <option value="owner">owner</option>
+        </select><br>
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="E-mail" required>
         <input type="password" name="password" placeholder="Password" required>
@@ -49,12 +54,14 @@ session_start();
         </div>
 
 
+
         <label for="captcha">Captcha:</label>
         <div class="captcha-container">
             <img id="captchaImage" src="generate_captcha.php" alt="Captcha">
             <button type="button" id="refreshCaptcha">Refresh</button>
         </div>
         <input type="text" id="captchaInput" name="captcha" placeholder="Enter the text above" required>
+
 
 
         <input type="submit" value="Register">
@@ -64,6 +71,18 @@ session_start();
 </div>
 
 <script>
+
+    function toggleUserType() {
+        const userType = document.getElementById("userType").value;
+        // const ownerFields = document.getElementById("ownerFields");
+        //
+        // // 如果选择房东，显示额外字段；否则隐藏
+        // if (userType === "owner") {
+        //     ownerFields.style.display = "block";
+        // } else {
+        //     ownerFields.style.display = "none";
+        // }
+    }
     // Refresh the CAPTCHA image
     $("#refreshCaptcha").on("click", function () {
         $("#captchaImage").attr("src", "generate_captcha.php?rand=" + Math.random());
