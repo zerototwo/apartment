@@ -26,6 +26,7 @@ if (empty($username) || empty($password)) {
         // 登录成功，设置会话变量
         $_SESSION['user_Iduser'] = $row['Iduser']; // 保存用户的唯一 ID
         $_SESSION['username'] = $row['username']; // 可选，保存用户名
+        $_SESSION['userType'] = $row['userType'];
 
         // 跳转到主页
         echo "<script>alert('登录成功！'); window.location='index.php';</script>";
