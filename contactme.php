@@ -110,26 +110,26 @@
     <section>
         <h2>Contact Customer Service</h2>
         <p>For any inquiries regarding our website or application, please use the contact form below:</p>
-        <form class="contact-form" action="/submit_form" method="POST">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <form class="contact-form" action="process_form.php" method="POST">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-            <label for="subject">Subject *</label>
-            <select id="subject" name="subject" required>
-                <option value="">Select a subject</option>
-                <option value="support">Support Request</option>
-                <option value="general">General Inquiry</option>
-                <option value="feedback">Feedback</option>
-            </select>
+    <label for="subject">Subject *</label>
+    <select id="subject" name="subject" required>
+        <option value="">Select a subject</option>
+        <option value="support">Support Request</option>
+        <option value="general">General Inquiry</option>
+        <option value="feedback">Feedback</option>
+    </select>
 
-            <label for="message">Your Message *</label>
-            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+    <label for="message">Your Message *</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
 
-            <button type="submit">Send My Message</button>
-        </form>
+    <button type="submit">Send My Message</button>
+</form>
     </section>
 </main>
 
